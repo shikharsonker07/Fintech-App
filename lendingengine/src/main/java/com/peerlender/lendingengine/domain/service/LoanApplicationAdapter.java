@@ -9,7 +9,9 @@ import com.peerlender.lendingengine.domain.model.User;
 import com.peerlender.lendingengine.domain.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoanApplicationAdapter {
 
     private final UserRepository userRepository;
@@ -24,8 +26,8 @@ public class LoanApplicationAdapter {
         if (borrowerOptional.isPresent() == false) {
             throw new UserNotFoundException(loanRequest.getBorrowerId());
         } else {
-            return new LoanApplication(loanRequest.getAmount(), borrowerOptional.get(), 
-            loanRequest.getInterestRate(),loanRequest.getDaysToRepay());
+            return new LoanApplication(loanRequest.getAmount(), borrowerOptional.get(), loanRequest.getInterestRate(),
+                    loanRequest.getDaysToRepay());
         }
     }
 }

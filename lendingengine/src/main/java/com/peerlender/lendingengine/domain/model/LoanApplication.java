@@ -8,17 +8,28 @@ import javax.persistence.ManyToOne;
 public final class LoanApplication {
     @Id
     private long id;
-    private final int amount;
+    private int amount;
     @ManyToOne
-    private final User borrower;
-    private final int repaymentTermInDays;
-    private final double interestRate;
+    private User borrower;
+    private int repaymentTermInDays;
+    private double interestRate;
+
+    public LoanApplication() {
+    }
 
     public LoanApplication(int amount, User borrower, double interestRate, int repaymentTermInDays) {
         this.amount = amount;
         this.borrower = borrower;
         this.interestRate = interestRate;
         this.repaymentTermInDays = repaymentTermInDays;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getAmount() {
